@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour {
 
-    [Header("Information")]
-    public GameObject explosion;
+    //Utilizo el clase ExplosionManager para generar las explosiones
     
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {

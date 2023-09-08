@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour {
 
-    [Header("Information")]
-    public int playerId = 0;
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject != null){
             //Destroy(gameObject);

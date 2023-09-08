@@ -16,10 +16,11 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public float rotationSpeed;
     public float maxSpeed; 
-    public float gravity;
+    [Tooltip("Asignar multiplicador de la gravedad inicial")] public float gravity;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = gravity;
     }
     
     private void OnMove(InputValue movementValue) {
@@ -36,8 +37,6 @@ public class PlayerController : MonoBehaviour {
         //Movimiento del jugador
         //rb.velocity = new Vector2(movementX, movementY) * speed;
         rb.velocity = transform.up * speed;
-        //Gravedad
-        rb.gravityScale = gravity;
     }
 }
 

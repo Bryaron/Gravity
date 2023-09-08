@@ -1059,6 +1059,7 @@ GameObject:
   - component: {fileID: 1043208090}
   - component: {fileID: 1043208088}
   - component: {fileID: 1043208091}
+  - component: {fileID: 1043208092}
   m_Layer: 0
   m_Name: SmallMeteor
   m_TagString: Enemy
@@ -1199,6 +1200,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 5092847227188063613, guid: 05fe60759f909b44a85f680531fdfe9b, type: 3}
+--- !u!114 &1043208092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043208085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6aa5456b877fd4f89406b12342f6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1353340901
 PrefabInstance:
   m_ObjectHideFlags: 0

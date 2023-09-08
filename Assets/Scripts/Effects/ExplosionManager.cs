@@ -19,6 +19,7 @@ public class ExplosionManager : MonoBehaviour {
         }
     }
 
+    //Genera las explosiones; toma datos como el spawnRaius y amount desde el editor
     public void Explosion(Vector2 centerPosition) {
         for (int i = 0; i < amount; i++) {
             Vector2 randomPosition = centerPosition + Random.insideUnitCircle * spawnRadius;

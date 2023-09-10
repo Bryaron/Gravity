@@ -341,11 +341,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   movementX: 0
   movementY: 0
-  enemy: {fileID: 0}
   speed: 1
   rotationSpeed: 4
   maxSpeed: 2
-  gravity: 1
 --- !u!50 &453658229
 Rigidbody2D:
   serializedVersion: 4
@@ -395,7 +393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4ec482a0c4c0344ad19f75ef0ab178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
+  rb: {fileID: 0}
+  gravity: 1
+  hitsTaken: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ PrefabInstance:
       objectReference: {fileID: -1392022631, guid: 861767d2ac9711545b82c6fb5b6e5d89, type: 3}
     - target: {fileID: 6625822065121704147, guid: 976422fff3ec9d146932bb3c5e713da8, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6625822065121704147, guid: 976422fff3ec9d146932bb3c5e713da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -572,6 +572,7 @@ GameObject:
   - component: {fileID: 615046904}
   - component: {fileID: 615046903}
   - component: {fileID: 615046905}
+  - component: {fileID: 615046906}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Enemy
@@ -644,7 +645,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &615046905
 CapsuleCollider2D:
@@ -662,6 +663,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.25, y: 0.18}
   m_Direction: 0
+--- !u!114 &615046906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615046902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b40697f04aaa84997b47531af08986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &620600303
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +685,8 @@ GameObject:
   m_Component:
   - component: {fileID: 620600305}
   - component: {fileID: 620600304}
-  - component: {fileID: 620600306}
+  - component: {fileID: 620600307}
+  - component: {fileID: 620600308}
   m_Layer: 0
   m_Name: MediumMeteor
   m_TagString: Enemy
@@ -745,22 +759,36 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &620600306
-CapsuleCollider:
+--- !u!114 &620600307
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620600303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b40697f04aaa84997b47531af08986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &620600308
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620600303}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.16
-  m_Height: 0.31
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.32, y: 0.31}
+  m_Direction: 0
 --- !u!1 &677043246
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +849,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793660528
 GameObject:
@@ -1045,6 +1073,120 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1020945659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1020945663}
+  - component: {fileID: 1020945662}
+  - component: {fileID: 1020945661}
+  - component: {fileID: 1020945660}
+  m_Layer: 0
+  m_Name: BigMeteor (1)
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1020945660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020945659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b40697f04aaa84997b47531af08986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &1020945661
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020945659}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.6, y: 0.3}
+  m_Direction: 1
+--- !u!212 &1020945662
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020945659}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1152805033, guid: 861767d2ac9711545b82c6fb5b6e5d89, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.6, y: 0.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1020945663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020945659}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1599998, y: 2.2853115, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043208085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1201,6 @@ GameObject:
   - component: {fileID: 1043208090}
   - component: {fileID: 1043208088}
   - component: {fileID: 1043208091}
-  - component: {fileID: 1043208092}
   m_Layer: 0
   m_Name: SmallMeteor
   m_TagString: Enemy
@@ -1132,7 +1273,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1043208088
 MonoBehaviour:
@@ -1199,19 +1340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b40697f04aaa84997b47531af08986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 5092847227188063613, guid: 05fe60759f909b44a85f680531fdfe9b, type: 3}
---- !u!114 &1043208092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043208085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca6aa5456b877fd4f89406b12342f6f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1353340901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1249,7 +1377,7 @@ PrefabInstance:
       objectReference: {fileID: -1392022631, guid: 861767d2ac9711545b82c6fb5b6e5d89, type: 3}
     - target: {fileID: 6625822065121704147, guid: 976422fff3ec9d146932bb3c5e713da8, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6625822065121704147, guid: 976422fff3ec9d146932bb3c5e713da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1454,7 +1582,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1860896605
 GameObject:
@@ -1487,7 +1615,7 @@ Transform:
   - {fileID: 1819644360}
   - {fileID: 380766999}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1865434443
 PrefabInstance:
@@ -1526,7 +1654,7 @@ PrefabInstance:
       objectReference: {fileID: -1392022631, guid: 861767d2ac9711545b82c6fb5b6e5d89, type: 3}
     - target: {fileID: 6625822065121704147, guid: 976422fff3ec9d146932bb3c5e713da8, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6625822065121704147, guid: 976422fff3ec9d146932bb3c5e713da8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1661,7 +1789,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1930548699}
   - component: {fileID: 1930548698}
-  - component: {fileID: 1930548700}
+  - component: {fileID: 1930548702}
+  - component: {fileID: 1930548701}
   m_Layer: 0
   m_Name: BigMeteor
   m_TagString: Enemy
@@ -1736,20 +1865,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1930548700
-CapsuleCollider:
+--- !u!114 &1930548701
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930548697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b40697f04aaa84997b47531af08986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &1930548702
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930548697}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.15011658
-  m_Height: 0.6037465
-  m_Direction: 0
-  m_Center: {x: 0.001873225, y: -0.01, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.6, y: 0.3}
+  m_Direction: 1
 --- !u!1001 &2141933880
 PrefabInstance:
   m_ObjectHideFlags: 0

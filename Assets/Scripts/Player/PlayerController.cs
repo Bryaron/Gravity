@@ -12,15 +12,12 @@ public class PlayerController : MonoBehaviour {
     public float movementY;
 
     [Header("Configuration")]
-    public Rigidbody2D enemy;
     public float speed;
     public float rotationSpeed;
     public float maxSpeed; 
-    [Tooltip("Asignar multiplicador de la gravedad inicial")] public float gravity;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = gravity;
     }
     
     private void OnMove(InputValue movementValue) {

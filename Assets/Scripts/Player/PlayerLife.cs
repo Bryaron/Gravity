@@ -4,10 +4,40 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour {
 
+    [Header("Information")]
+    public Rigidbody2D rb;
+    [Tooltip("Asignar multiplicador de la gravedad inicial")] public float gravity;
+    public int hitsTaken = 0;
+
+    private void Start() {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = gravity;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject != null){
             //Destroy(gameObject);
             Debug.Log("Chocaste con algo: Disminuyendo velocidad");
+            //Aumentando la gravedad
+            hitsTaken++;
+            switch (hitsTaken) {
+                case 1: gravity = 1.5f;
+                break;
+                case 2: gravity = 2.5f;
+                break;
+                case 3: gravity = 3.5f;
+                break;
+                case 4: gravity = 4.5f;
+                break;
+                case 5: gravity = 8.5f;
+                break;
+                case 6: gravity = 10.5f;
+                break;
+            }
+            //Mostrando y actualizando gravedad
+            rb.gravityScale = gravity;
+            gravity = rb.gravityScale;
+
         }
 
         if (collision.CompareTag("Edges")){

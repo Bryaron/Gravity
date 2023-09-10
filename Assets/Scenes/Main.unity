@@ -394,7 +394,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+<<<<<<< HEAD
   gravity: 1
+=======
+  gravity: 0
+>>>>>>> 9b2aa3921ad0324d5dc05f5d65c16b6d2d04ec8e
   hitsTaken: 0
 --- !u!1 &519420028
 GameObject:

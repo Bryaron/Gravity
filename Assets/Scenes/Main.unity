@@ -659,7 +659,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -693,6 +693,7 @@ MonoBehaviour:
   angle: 0
   target: {fileID: 453658226}
   speed: 1
+  meteorOption: 2
 --- !u!50 &615046908
 Rigidbody2D:
   serializedVersion: 4
@@ -724,8 +725,10 @@ GameObject:
   m_Component:
   - component: {fileID: 620600305}
   - component: {fileID: 620600304}
-  - component: {fileID: 620600307}
   - component: {fileID: 620600308}
+  - component: {fileID: 620600309}
+  - component: {fileID: 620600307}
+  - component: {fileID: 620600310}
   m_Layer: 0
   m_Name: MediumMeteor
   m_TagString: Enemy
@@ -828,6 +831,44 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.32, y: 0.31}
   m_Direction: 0
+--- !u!50 &620600309
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620600303}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &620600310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620600303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb787891c09a3f40985a15dc86a3e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  angle: 0
+  target: {fileID: 453658226}
+  speed: 1
+  meteorOption: 4
 --- !u!1 &677043246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1164,9 @@ GameObject:
   - component: {fileID: 1020945663}
   - component: {fileID: 1020945662}
   - component: {fileID: 1020945661}
+  - component: {fileID: 1020945664}
   - component: {fileID: 1020945660}
+  - component: {fileID: 1020945665}
   m_Layer: 0
   m_Name: BigMeteor (1)
   m_TagString: Enemy
@@ -1219,13 +1262,51 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020945659}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1599998, y: 2.2853115, z: 0}
+  m_LocalPosition: {x: 1.76, y: 2.2853115, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1020945664
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020945659}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1020945665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020945659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb787891c09a3f40985a15dc86a3e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  angle: 0
+  target: {fileID: 453658226}
+  speed: 1
+  meteorOption: 4
 --- !u!1 &1043208085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,9 +1317,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1043208087}
   - component: {fileID: 1043208086}
-  - component: {fileID: 1043208089}
   - component: {fileID: 1043208090}
-  - component: {fileID: 1043208088}
+  - component: {fileID: 1043208089}
+  - component: {fileID: 1043208092}
   - component: {fileID: 1043208091}
   m_Layer: 0
   m_Name: SmallMeteor
@@ -1314,22 +1395,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1043208088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043208085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232f900bc8e42a640b8e66659a7eda58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  angle: 0
-  target: {fileID: 453658226}
-  speed: 1
 --- !u!50 &1043208089
 Rigidbody2D:
   serializedVersion: 4
@@ -1345,7 +1410,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1361,13 +1426,30 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.13, y: 0.11}
   m_Direction: 0
 --- !u!114 &1043208091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043208085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb787891c09a3f40985a15dc86a3e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  angle: 0
+  target: {fileID: 453658226}
+  speed: 1
+  meteorOption: 3
+--- !u!114 &1043208092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1829,7 +1911,9 @@ GameObject:
   - component: {fileID: 1930548699}
   - component: {fileID: 1930548698}
   - component: {fileID: 1930548702}
+  - component: {fileID: 1930548704}
   - component: {fileID: 1930548701}
+  - component: {fileID: 1930548703}
   m_Layer: 0
   m_Name: BigMeteor
   m_TagString: Enemy
@@ -1932,6 +2016,44 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.6, y: 0.3}
   m_Direction: 1
+--- !u!114 &1930548703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930548697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb787891c09a3f40985a15dc86a3e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 453658229}
+  angle: 0
+  target: {fileID: 453658226}
+  speed: 1
+  meteorOption: 1
+--- !u!50 &1930548704
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930548697}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &2141933880
 PrefabInstance:
   m_ObjectHideFlags: 0

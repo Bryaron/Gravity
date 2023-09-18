@@ -48,3 +48,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GameOverScreen
+    uniqueID: 2450117013
+    locked: 0

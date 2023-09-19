@@ -9,8 +9,18 @@ public class Fade : MonoBehaviour {
     public float fadeTime = 1;
     [SerializeField] SpriteRenderer spriteRenderer;
 
+    /*---Suscribiendo metodos esta clase a mi evento---*/
+    private void OnEnable() {
+        GameManager.OnPlayerDeath += FadeIn;
+    }
+
+    private void OnDisable() {
+        GameManager.OnPlayerDeath -= FadeIn;
+    }
+    /*--------------------------------------------------*/
     private void Start() {
         FadeOut();
+        
     }
 
     [ContextMenu("FadeIn")]

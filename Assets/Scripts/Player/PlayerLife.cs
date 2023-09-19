@@ -45,6 +45,11 @@ public class PlayerLife : MonoBehaviour {
             ExplosionManager.instance.Explosion(transform.position);
             gameObject.SetActive(false);
             Debug.Log("Saliste de la ruta de escape, Eliminandote");
+            /*
+            Buscando al GameManager en escena para usar su funcion
+            que verifica mi evento OnPlayerDeath
+             */
+            FindObjectOfType<GameManager>().PlayerKilled();
         }
     }
 }

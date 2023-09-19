@@ -10,7 +10,6 @@ public class EnemyLife : MonoBehaviour {
         if (collision.CompareTag("Player")) {
             ExplosionManager.instance.Explosion(transform.position);
             gameObject.SetActive(false);
-
         }
     }
 }

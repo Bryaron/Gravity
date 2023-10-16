@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeteorMove : MonoBehaviour {
@@ -11,10 +13,17 @@ public class MeteorMove : MonoBehaviour {
     [Header("Configuration")]
     public Transform target;
     public float speed = 1f;
-    public int meteorOption = 1;
+    public enum MeteorOption {
+        Meteor,
+        SemiDirectedMeteor,
+        DirectedMeteor,
+        DirectionalMeteor
+    }
+
+    public MeteorOption meteorOption;
     private Vector2 direction;
 
-    private void Start() {
+    private void OnEnable() {
         rb = GetComponent<Rigidbody2D>();
         // Obtener el componente Transform del objeto player para tenerlo por defecto
         if (target == null) {
@@ -22,32 +31,31 @@ public class MeteorMove : MonoBehaviour {
             GameObject player = GameObject.FindWithTag("Player");
             target = player.transform; 
         }
-    }
-    
-    private void Awake() {
-        //Se usa para directionalMeteor()
+
+        //Se usa para directionalMeteor(), direccion inicial hacia el target
         direction = target.position - transform.position;
     }
     
     private void FixedUpdate() {
         switch (meteorOption) {
-            case 1: Meteor();
+            case MeteorOption.Meteor: Meteor();
             break;
-            case 2: SemiDirectedMeteor();
+            case MeteorOption.SemiDirectedMeteor: SemiDirectedMeteor();
             break;
-            case 3: DirectedMeteor();
+            case MeteorOption.DirectedMeteor: DirectedMeteor();
             break;
-            case 4: DirectionalMeteor();
+            case MeteorOption.DirectionalMeteor: DirectionalMeteor();
             break; 
         }
-
     }
 
     //Comportamiento de meteoritos
+    //Meteoro normal
     private void Meteor() {
         rb.velocity = Vector2.down * speed;
     }
 
+    //Meteoro qe si pasa su objetivo, deja de seuirlo y cae
     private void SemiDirectedMeteor() {
         if (transform.position.y > target.position.y) {
             //Avanzando hacia el jugador
@@ -61,13 +69,14 @@ public class MeteorMove : MonoBehaviour {
         }
     }
 
+    //Meteoro que seguira al jugador
     private void DirectedMeteor() {
         rb.velocity = (target.position - transform.position).normalized * speed;
         AngularDirection();
     }
 
+    //Meteoro que ira en direccion a la posicion inicial del jugador
     private void DirectionalMeteor() {
-        
         rb.velocity = direction.normalized * speed;
     }
 

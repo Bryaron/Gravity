@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEditor;
 
 public class EnemyGenerator : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class EnemyGenerator : MonoBehaviour {
 
     [Header("Configuration")]
     [Tooltip("Rango en el cual se generan enemigos"+" Si esta vacio se usara el punto de este GameObject")]
-    [SerializeField] private Transform[] points;
+    [SerializeField] public Transform[] points;
     [SerializeField] private GameObject[] enemys;
     [SerializeField] private  float enemyTime;
     
@@ -52,4 +53,36 @@ public class EnemyGenerator : MonoBehaviour {
         enemy2.SetActive(true);
     }
 
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        foreach (var point in points) {
+            Gizmos.DrawSphere(point.position, 0.1f);
+        }
+    }
 }
+
+[CustomEditor(typeof(EnemyGenerator))]
+    public class EnemyCustomEditor : Editor {
+        public void OnSceneGUI() {
+            var enemyObj = (EnemyGenerator)target;
+            for (int i = 0; i < enemyObj.points.Count(); i++) {
+                var point = enemyObj.points[i];
+                var nextPoint = enemyObj.points[(i + 1) % enemyObj.points.Count()];
+
+                if (point == null) continue;
+                if (nextPoint == null) continue;
+
+                Handles.color = Color.white;
+                Handles.DrawDottedLine(point.position, nextPoint.position, 5f);
+
+                EditorGUI.BeginChangeCheck();
+                var newPos = Handles.PositionHandle(point.position, point.rotation);
+                if(EditorGUI.EndChangeCheck()) {
+                    Undo.RecordObject(point, "Move Point");
+                    point.position = newPos;
+                }
+
+                point.position = newPos;
+            }
+        }
+    }

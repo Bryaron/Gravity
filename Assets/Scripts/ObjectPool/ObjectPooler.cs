@@ -76,13 +76,11 @@ public class ObjectPooler : MonoBehaviour {
         }
 
         if(instancedObjectsWithTag[randomNumber].CompareTag(tag)) {
-                GameObject go = Instantiate(instancedObjectsWithTag[randomNumber]);
-                go.SetActive(false);
-                instancedObjectsWithTag.Add(go);
-                return go;
-            }
-
-
+            GameObject go = Instantiate(instancedObjectsWithTag[randomNumber]);
+            go.SetActive(false);
+            instancedObjectsWithTag.Add(go);
+            return go;
+        }
         return null;
     }
 }

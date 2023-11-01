@@ -18,5 +18,7 @@ public class MainCamera : MonoBehaviour {
         playerPosition.z = transform.position.z;
 
         transform.position = playerPosition;
+
+        //transform.position = new Vector3(transform.position.x, playerPosition.y + 3f, transform.position.z);
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Edges
   - Explosion
+  - FinalPoint
   layers:
   - Default
   - TransparentFX

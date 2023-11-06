@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public static event Action OnPlayerDeath;
+    public static event Action OnPlayerHit;
     public GameObject GameOverScreen;
 
     private void OnEnable() {
@@ -27,5 +28,9 @@ public class GameManager : MonoBehaviour {
     private void ShowGameOverScreen() {
         //Muestra GameOverScreen
         GameOverScreen.SetActive(true);
+    }
+
+    public void PlayerHitted() {
+        OnPlayerHit?.Invoke();
     }
 }

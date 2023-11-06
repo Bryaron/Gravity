@@ -15,31 +15,44 @@ public class EnemyGenerator : MonoBehaviour {
     [SerializeField] public Transform[] points;
     [SerializeField] private GameObject[] enemys;
     [SerializeField] private  float enemyTime;
+    [SerializeField] private Transform player;
     
     
     private float Timer;
-
+    private float distance;   
     private void Start() {
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        distance = transform.position.y - player.position.y;
+
         //Por Defecto
         if (points == null || points.Length == 0) {
             //Transform como unico punto inicial
             points = new Transform[1];
             points[0] = transform;
         }
-
-        maxX = points.Max(point => point.position.x);
-        minX = points.Min(point => point.position.x);
-        maxY = points.Max(point => point.position.y);
-        minY = points.Min(point => point.position.y);
     }
 
     private void Update() {
-        Timer += Time.deltaTime;
 
+        FollowPlayer();
+        CalculatePoints();
+        Timer += Time.deltaTime;
         if (Timer >= enemyTime) {
             Timer = 0;
             MakeEnemy();
         }
+    }
+
+    private void FollowPlayer(){
+        transform.position = new Vector3(0, player.position.y + distance ,0); 
+    }
+
+    private void CalculatePoints() {
+        maxX = points.Max(point => point.position.x);
+        minX = points.Min(point => point.position.x);
+        maxY = points.Max(point => point.position.y);
+        minY = points.Min(point => point.position.y);
     }
 
     private void MakeEnemy() {
@@ -52,6 +65,7 @@ public class EnemyGenerator : MonoBehaviour {
         enemy2.transform.position = posicionAleatoria;
         enemy2.SetActive(true);
     }
+
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.yellow;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyLife : MonoBehaviour {
 
     [Header("Information")]
-    [SerializeField]private float lifeTime = 5f;
+    [SerializeField]private float lifeTime = 10f;
 
     private void Start() {
         StartCoroutine(DestroyAfterTime());
